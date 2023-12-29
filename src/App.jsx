@@ -1022,39 +1022,94 @@
 
 
 // V6 --> Routing Method (object way routing)
+// V6 --> Routing Method (object way routing)
+// V6 --> Routing Method (object way routing)
+// V6 --> Routing Method (object way routing)
+// V6 --> Routing Method (object way routing)
 
-import React from 'react';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Layout from './routing/Layout';
-import Home from './routing/Home';
-import Contact from './routing/Contact';
-import About from './routing/About';
-import Errorpage from './routing/Errorpage';
+// import React from 'react';
+// import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+// import Layout from './routing/Layout';
+// import Home from './routing/Home';
+// import Contact from './routing/Contact';
+// import About from './routing/About';
+// import Errorpage from './routing/Errorpage';
 
-let r = createBrowserRouter([{
-  path: "/",
-  element: <Layout />,
-  children: [{
-    path: "/",
-    element: <Home />
-  },
-  {
-    path: "/contact",
-    element: <Contact />
-  },
-  {
-    path: "/about",
-    element: <About />
-  },
-  {
-    path: "*",
-    element: <Errorpage />
-  }
-  ]
-}])
+// let r = createBrowserRouter([{
+//   path: "/",
+//   element: <Layout />,
+//   children: [{
+//     path: "/",
+//     element: <Home />
+//   },
+//   {
+//     path: "/contact",
+//     element: <Contact />
+//   },
+//   {
+//     path: "/about",
+//     element: <About />
+//   },
+//   {
+//     path: "*",
+//     element: <Errorpage />
+//   }
+//   ]
+// }])
+
+// const App = () => {
+//   return <RouterProvider router={r}></RouterProvider>
+// }
+
+// export default App
+
+
+// Axios --> https://fakestoreapi.com/products
+// Axios --> https://fakestoreapi.com/products
+// Axios --> https://fakestoreapi.com/products
+// Axios --> https://fakestoreapi.com/products
+// Axios --> https://fakestoreapi.com/products
+
+import React from 'react'
+import { useEffect,useState } from 'react'
+import axios from 'axios'
 
 const App = () => {
-  return <RouterProvider router={r}></RouterProvider>
+  
+  let [product,setProduct] = useState();
+
+  let getApi = async () => {
+    let {data} = await axios.get("https://fakestoreapi.com/products")
+    console.log(data)
+    setProduct(data);
+  }
+
+  useEffect(()=>{
+    try {
+      getApi();  
+    } catch (e) {
+      console.log(e)
+    }
+  },[])
+  
+  return (
+    <>
+      App
+      <section>
+        {product.map((x,y)=>{
+          console.log(x)
+          return (
+            <div key={y}>
+              <h4>Title : {x.title}</h4>
+              <img src={x.image} alt="" height="100px" width="150px" />
+              <p>{x.rating.rate}</p>
+              <p>{x.rating.count}</p>
+            </div>
+          )
+        })}
+      </section>
+    </>
+  )
 }
 
 export default App
