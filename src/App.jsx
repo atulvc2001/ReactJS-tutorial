@@ -101,33 +101,38 @@
 
 // !Simple Counter
 
-// import React, {useState} from 'react'
+import React, {useState} from 'react'
 
 
 
-// const App = () => {
+const App = () => {
 
-//   let [count ,setCount] = useState(0)
+  let [count ,setCount] = useState(0)
 
-//   let counterup = () => {
-//     setCount(count+1)
-//   }
-//   let counterdown = () => {
-//     setCount(count-1)
-//   }
-//   let reset = () => {
-//     setCount(0)
-//   }
-//   return (
-//     <div>
-//       <h1>{count}</h1>
-//       <button onClick={counterup}>Up counter</button>
-//       <button onClick={counterdown}>Down counter</button>
-//       <button onClick={reset}>Up counter</button>
-//     </div>
-//   )
-// }
+  let counterup = () => {
+    setCount(count+5)
+  }
+  let counterdown = () => {
+    setCount(count-3)
+  }
+  let reset = () => {
+    setCount(0)
+  }
+  return (
+    
+    <div className='counter-container'>
+      <h1>Counter</h1>
+      <h1 className='counter-title'>{count}</h1>
+      <div className='counter-buttons'>
+        <button onClick={counterup}>Up counter</button>
+        <button onClick={counterdown}>Down counter</button>
+        <button onClick={reset}>Reset</button>
+      </div>
+    </div>
+  )
+}
 
+export default App
 
 // import React from 'react'
 // import Child from './Child'
@@ -1070,46 +1075,46 @@
 // Axios --> https://fakestoreapi.com/products
 // Axios --> https://fakestoreapi.com/products
 
-import React from 'react'
-import { useEffect,useState } from 'react'
-import axios from 'axios'
+// import React from 'react'
+// import { useEffect,useState } from 'react'
+// import axios from 'axios'
 
-const App = () => {
+// const App = () => {
   
-  let [product,setProduct] = useState();
+//   let [product,setProduct] = useState();
 
-  let getApi = async () => {
-    let {data} = await axios.get("https://fakestoreapi.com/products")
-    console.log(data)
-    setProduct(data);
-  }
+//   let getApi = async () => {
+//     let {data} = await axios.get("https://fakestoreapi.com/products")
+//     console.log(data)
+//     setProduct(data);
+//   }
 
-  useEffect(()=>{
-    try {
-      getApi();  
-    } catch (e) {
-      console.log(e)
-    }
-  },[])
+//   useEffect(()=>{
+//     try {
+//       getApi();  
+//     } catch (e) {
+//       console.log(e)
+//     }
+//   },[])
   
-  return (
-    <>
-      App
-      <section>
-        {product.map((x,y)=>{
-          console.log(x)
-          return (
-            <div key={y}>
-              <h4>Title : {x.title}</h4>
-              <img src={x.image} alt="" height="100px" width="150px" />
-              <p>{x.rating.rate}</p>
-              <p>{x.rating.count}</p>
-            </div>
-          )
-        })}
-      </section>
-    </>
-  )
-}
+//   return (
+//     <>
+//       App
+//       <section>
+//         {product.map((x,y)=>{
+//           console.log(x)
+//           return (
+//             <div key={y}>
+//               <h4>Title : {x.title}</h4>
+//               <img src={x.image} alt="" height="100px" width="150px" />
+//               <p>{x.rating.rate}</p>
+//               <p>{x.rating.count}</p>
+//             </div>
+//           )
+//         })}
+//       </section>
+//     </>
+//   )
+// }
 
-export default App
+// export default App

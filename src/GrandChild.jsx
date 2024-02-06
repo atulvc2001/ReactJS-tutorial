@@ -23,7 +23,7 @@ const GrandChild = (props) => {
   console.log(props)
   return (
     <div>
-      Grandchild
+      Grandchild component
     </div>
   )
 }
